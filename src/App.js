@@ -3,14 +3,23 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import EpisodesFetching from "./Components/EpisodesFetching"
 import Episode from "./Components/Episode"
+import Character from "./Components/Character"
+import Location from "./Components/Location"
+import Navbar from "./Components/Navbar"
+import Search from "./Components/Search"
 
 function App() {
   return (
     <BrowserRouter>
       <div>
+        <Navbar />
         <Switch>
           <Route exact path='/' component={EpisodesFetching} />
           <Route exact path='/episode/:id' render={(props) => <Episode {...props} />} />
+          <Route exact path='/character/:id' render={(props) => <Character {...props} />} />
+          <Route exact path='/location/:id' render={(props) => <Location {...props} />} />
+          <Route exact path='/search' render={(props) => <Search {...props} />} /> 
+
         </Switch>
       </div>
     </BrowserRouter>

@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import useCharacter from './utils/useCharacter'
+import { Link } from 'react-router-dom'
+
 
 
 
 const Episode = (props) => {
   const id = props.match.params.id;
   const [episode, setEpisode] = useState([])
-  const [charactersIDs, setCharactersIDs] = useState([])
   const [characters, setCharacters] = useState([])
   useEffect(() => {
     var list = []
@@ -23,7 +24,6 @@ const Episode = (props) => {
           list = [... list,  id]
           
         }
-        setCharactersIDs(list)
         axios.get('https://rickandmortyapi.com/api/character/' + list)
           .then(res => {
             console.log(res)
@@ -60,7 +60,7 @@ const Episode = (props) => {
           <td>
 
             {characters.map(character => (
-              <div key={character.id}>{character.name}</div>
+              <div key={ character.id }><Link to={'/character/' + character.id} key={ character.id }>{character.name}</Link></div>
             ))}
 
           </td>
