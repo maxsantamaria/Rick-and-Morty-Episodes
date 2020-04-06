@@ -1,7 +1,7 @@
 import React, {useState, useEffect}  from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { URL } from './utils'
 
 
 export default function Search(props) {
@@ -9,7 +9,7 @@ export default function Search(props) {
   const name = props.location.name
   console.log(name)
   const [episodes, setEpisodes] = useState([])
-  const [url, setUrl] = useState('https://rickandmortyapi.com/api/episode/?name=' + name);
+  const [url, setUrl] = useState(URL + 'episode/?name=' + name);
   useEffect(() => {
     if (url != "") {
       axios.get(url)
@@ -23,7 +23,7 @@ export default function Search(props) {
     }
   }, [url])
   const [characters, setCharacters] = useState([])
-  const [url_char, setUrl_char] = useState('https://rickandmortyapi.com/api/character/?name=' + name);
+  const [url_char, setUrl_char] = useState(URL + 'character/?name=' + name);
   useEffect(() => {
     if (url_char != "") {
       axios.get(url_char)
@@ -38,7 +38,7 @@ export default function Search(props) {
   }, [url_char])
 
   const [locations, setLocations] = useState([])
-  const [url_loc, setUrl_loc] = useState('https://rickandmortyapi.com/api/location/?name=' + name);
+  const [url_loc, setUrl_loc] = useState(URL + 'location/?name=' + name);
   useEffect(() => {
     if (url_loc != "") {
       axios.get(url_loc)

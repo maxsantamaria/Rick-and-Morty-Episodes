@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-const useCharacter = (ids) => {
+export const useCharacter = (ids) => {
   console.log(ids)
   const [character, setCharacter] = useState([])
   useEffect(() => {
@@ -18,4 +18,3 @@ const useCharacter = (ids) => {
   return character;
 }
 
-export default useCharacter;

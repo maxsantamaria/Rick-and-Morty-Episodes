@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import useCharacter from './utils/useCharacter'
 import { Link } from 'react-router-dom'
+import { URL } from './utils'
 
 
 const Character = (props) => {
@@ -13,7 +14,7 @@ const Character = (props) => {
   const [idOrigin, setIdOrigin] = useState('')
   const [idLocation, setIdLocation] = useState('')
   useEffect(() => {
-    axios.get('https://rickandmortyapi.com/api/character/' + id)
+    axios.get(URL + 'character/' + id)
       .then(res => {
         console.log(res.data)
         setCharacter(res.data)

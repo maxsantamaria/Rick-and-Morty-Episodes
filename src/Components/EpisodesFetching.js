@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styles from './components.modules.css'
 import { Link } from 'react-router-dom'
-
+import { URL } from './utils'
 
 const EpisodesFetching = () => {
   const [episodes, setEpisodes] = useState([]);
-  const [url, setUrl] = useState('https://rickandmortyapi.com/api/episode');
+  const [url, setUrl] = useState(URL + 'episode');
 
   useEffect(() => {
     if (url != "") {

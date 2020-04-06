@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import useCharacter from './utils/useCharacter'
 import { Link } from 'react-router-dom'
+import { URL } from './utils'
 
 
 
@@ -12,7 +13,7 @@ const Episode = (props) => {
   const [characters, setCharacters] = useState([])
   useEffect(() => {
     var list = []
-    axios.get('https://rickandmortyapi.com/api/episode/' + id)
+    axios.get(URL + 'episode/' + id)
       .then(res => {
         console.log(res.data.characters)
         setEpisode(res.data)
@@ -24,7 +25,7 @@ const Episode = (props) => {
           list = [... list,  id]
           
         }
-        axios.get('https://rickandmortyapi.com/api/character/' + list)
+        axios.get(URL + 'character/' + list)
           .then(res => {
             console.log(res)
             setCharacters(res.data)

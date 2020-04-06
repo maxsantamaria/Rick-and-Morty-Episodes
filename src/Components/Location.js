@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import { URL } from './utils'
 
 
 const Location = (props) => {
@@ -8,7 +9,7 @@ const Location = (props) => {
   const [location, setLocation] = useState([])
   const [characters, setCharacters] = useState([])
   useEffect(() => {
-    axios.get('https://rickandmortyapi.com/api/location/' + id)
+    axios.get(URL + 'location/' + id)
       .then(res => {
         console.log(res)
         setLocation(res.data)
@@ -19,9 +20,15 @@ const Location = (props) => {
           const id = url.slice(url.lastIndexOf("/") + 1)
           characters_ids = [... characters_ids,  id]
         }
-        axios.get('https://rickandmortyapi.com/api/character/' + characters_ids)
+        console.log(characters_ids)
+        axios.get(URL + 'character/' + characters_ids)
           .then(res => {
-            setCharacters(res.data)
+            if (characters_ids.length > 1){
+              setCharacters(res.data)
+            }
+            else{
+              setCharacters([res.data])
+            }
           })
           .catch(err => {
             console.log(err)
