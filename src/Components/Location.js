@@ -48,7 +48,7 @@ const Location = (props) => {
             <td>{location.dimension}</td>
             <td>
               {characters.map(character => (
-                <div key={character.id}>{character.name}</div>
+                <div key={character.id}><Link to={'/character/' + character.id} key={character.id}>{character.name}</Link></div>
               ))}
             </td>
           </tr>

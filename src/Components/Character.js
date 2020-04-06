@@ -77,7 +77,7 @@ const Character = (props) => {
             <td><Link to={'/location/' + idLocation} key={idLocation}> {location.name} </Link></td>
             <td>
               {episodes.map(episode => (
-                <div key={ episode.id }>{episode.name}</div>
+                <div key={ episode.id }><Link to={'/episode/' + episode.id } key={episode.id}>{episode.name}</Link></div>
               ))}
             </td>
           </tr>
